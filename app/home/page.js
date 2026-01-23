@@ -250,6 +250,7 @@ export default function Home() {
                         Nos techniciens effectuent
                     </h2>
                     <ul className="space-y-3 text-slate-300 ">
+                        <li>Construction batiment</li>
                         <li>Mise en service des matériels télécom</li>
                         <li>Maintenance préventive</li>
                         <li>Maintenance corrective</li>
@@ -596,11 +597,11 @@ export default function Home() {
                                 viewport={{once: true, amount: 0.2}}
                                 whileHover={{y: -8, scale: 1.05}}
                                 transition={{type: "spring", stiffness: 200}}
-                                className="rounded-2xl shadow-lg p-8 text-center border border-sky-400 cursor-pointer"
+                                className="rounded-2xl shadow-lg p-6 text-center border border-sky-400 cursor-pointer"
                             >
-                                <Phone className="mx-auto text-red-600 mb-4 w-6 h-6"/>
-                                <p className="font-semibold">Téléphone</p>
-                                <p className="text-sm">06 953 33 22 / 06 457 30 10 </p>
+                                <Phone className="mx-auto text-red-600 mb-4 w-8 h-6"/>
+                                <p className="font-semibold mb-2">Téléphone</p>
+                                <p className="text-sm">+242 06 953 33 22 /+242 06 457 30 10 </p>
                             </motion.div>
 
                             <motion.div
