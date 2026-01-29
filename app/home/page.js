@@ -30,8 +30,24 @@ import real6 from "../../public/WhatsApp Image 2026-01-12 at 03.05.09.jpeg";
 import humainImg from "../../public/1752251352.jpg";
 import techniqueImg from "../../public/Memoire-technique-batiment-1-scaled.jpg";
 import logistiqueImg from "../../public/carrieres-logistique.jpg";
+import hero1 from "../../public/telecomms.jpg";
+//import hero2 from "../../public/chargeur.jpg";
+import hero3 from "../../public/étapes_de_conception.jpg";
 
 export default function Home() {
+
+
+
+    const heroImages = [hero1, hero3];
+    const [currentHero, setCurrentHero] = useState(0);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentHero((prev) => (prev + 1) % heroImages.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     const [showHero, setShowHero] = useState(false);
     const [notConnection,SetNotConnection ] = useState(false)
     useEffect(() => {
@@ -148,17 +164,61 @@ export default function Home() {
             </nav>
 
             {/* ================= HERO ================= */}
-            <section
-                className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
-                style={{backgroundImage: "url('../../étapes_de_conception.jpg')"}}
-            >
+
+            {/*<section*/}
+            {/*    className="relative min-h-screen flex items-center justify-center bg-cover bg-center"*/}
+            {/*    style={{backgroundImage: "url('../../étapes_de_conception.jpg')"}}*/}
+            {/*>*/}
+            {/*    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-slate-900/80 to-black/70"/>*/}
+
+            {/*    /!* Ligne structure BTP *!/*/}
+            {/*    <div className="absolute left-8 top-0 h-full w-[3px] bg-sky-400 animate-pulse hidden md:block"/>*/}
+
+            {/*    /!*<div className="absolute inset-0 bg-black/70"/>*!/*/}
+
+            {/*    <motion.div*/}
+            {/*        initial="hidden"*/}
+            {/*        animate={showHero ? "visible" : "hidden"}*/}
+            {/*        variants={fadeUp}*/}
+            {/*        className="relative z-10 text-center px-6"*/}
+            {/*    >*/}
+            {/*        <h1 className="text-4xl md:text-6xl font-extrabold text-sky-400">*/}
+            {/*            BÂTIR L’AVENIR*/}
+            {/*        </h1>*/}
+            {/*        <p className="mt-4  text-white">*/}
+            {/*            Télécom • Génie civil • Maintenance • Ingénierie*/}
+            {/*        </p>*/}
+            {/*    </motion.div>*/}
+            {/*</section>*/}
+
+
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+                {/* Image animée */}
+                <motion.div
+                    key={currentHero}
+                    initial={{opacity: 0, scale: 1.05}}
+                    animate={{opacity: 1, scale: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 1}}
+                    className="absolute inset-0"
+                >
+                    <Image
+                        src={heroImages[currentHero]}
+                        alt="Hero background"
+                        fill
+                        priority
+                        className="object-cover"
+                    />
+                </motion.div>
+
+                {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-slate-900/80 to-black/70"/>
 
-                {/* Ligne structure BTP */}
+                {/* Ligne structure */}
                 <div className="absolute left-8 top-0 h-full w-[3px] bg-sky-400 animate-pulse hidden md:block"/>
 
-                {/*<div className="absolute inset-0 bg-black/70"/>*/}
-
+                {/* Texte */}
                 <motion.div
                     initial="hidden"
                     animate={showHero ? "visible" : "hidden"}
@@ -168,11 +228,13 @@ export default function Home() {
                     <h1 className="text-4xl md:text-6xl font-extrabold text-sky-400">
                         BÂTIR L’AVENIR
                     </h1>
-                    <p className="mt-4  text-white">
+                    <p className="mt-4 text-white">
                         Télécom • Génie civil • Maintenance • Ingénierie
                     </p>
                 </motion.div>
+
             </section>
+
 
             {/* ================= ZONE STICKY ================= */}
             <section className="scroll-mt-15 mt-15 relative h-auto">
@@ -309,6 +371,7 @@ export default function Home() {
                         </h2>
                         <ul className="grid grid-cols-2 gap-3 text-slate-300">
                             <li>Télécom & Infrastructure</li>
+                            <li>Construction Bâtiments</li>
                             <li>Informatique & NTIC</li>
                             <li>Optimisation</li>
                             <li>Génie civil</li>
@@ -523,25 +586,13 @@ export default function Home() {
                 </h2>
 
                 <div
-                    className="
-      px-4 sm:px-6
-      max-w-7xl mx-auto
-      grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-      gap-6
-      md:skew-y-[-6deg]
-    "
+                    className=" px-4 sm:px max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:skew-y-[-6deg] "
                 >
                     {[real2, real3, real4, real5, real6].map((img, i) => (
                         <motion.div
                             key={i}
                             whileHover={{scale: 1.05}}
-                            className="
-          h-56 sm:h-64 md:h-72
-          rounded-xl
-          overflow-hidden
-          md:skew-y-[6deg]
-          transition-transform
-        "
+                            className=" h-56 sm:h-64 md:h-72 rounded-xl overflow-hidden md:skew-y-[6deg] transition-transform"
                         >
                             <Image
                                 src={img}
